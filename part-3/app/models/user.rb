@@ -1,6 +1,11 @@
 class User < ActiveRecord::Base
-  validates :name, :email, :pw_hash, presence: true
+  validates :username, :email, :pw_hash, presence: true
   validates :email, uniqueness: true
+  validates :username, uniqueness: true
+
+  has_many :items
+  has_many :bids
+
 
   # include BCrypt
 

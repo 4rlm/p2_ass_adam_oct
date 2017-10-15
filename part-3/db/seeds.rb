@@ -43,5 +43,3 @@ def seed_item_table
 
 end
 seed_item_table
-
-

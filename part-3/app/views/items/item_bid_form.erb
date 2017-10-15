@@ -34,7 +34,23 @@
   </table>
 
   <div class="">
-    <h3><a href="/items/<%= @item.id %>/item_bid_form">Place Bid</a></h3>
+    <h3>bid form here.</h3>
+
+    <form class="form-horizontal" action="/items/<%= @item.id %>/item_bid_form" method="post">
+
+      <div class="form-group">
+        <label for="amount" class="col-sm-2 control-label">Bid Amount</label>
+        <div class="col-sm-10">
+          <input class="form-control" id="amount" name="bid[amount]" type="text" placeholder="place your bid ... $..." />
+        </div>
+      </div>
+
+      <button class="btn btn-success" name="commit" type="submit">Submit My Bid</button>
+
+    </form>
+
   </div>
+
+
 
 </div>

@@ -4,7 +4,7 @@ class CreateBids < ActiveRecord::Migration[5.0]
       t.decimal :amount
 			t.integer :user_id
 			t.integer :item_id
-			
+
       t.timestamps null: false
     end
   end

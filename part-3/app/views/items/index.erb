@@ -3,13 +3,13 @@
 <table class="table table-bordered table-hover table-striped">
   <tr>
     <th class="w-small">ID</th>
-<th>Name</th>
-<th>Condition</th>
-<th>Description</th>
-<th>Start Time</th>
-<th>End Time</th>
-<th>Status</th>
-<th>User Id</th>
+    <th>Name</th>
+    <th>Condition</th>
+    <th>Description</th>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Status</th>
+    <th>User Id</th>
 
     <th class="w-med">Updated</th>
     <th colspan="3" class="w-med">Manage</th>
@@ -17,13 +17,13 @@
   <% @items.each do |item|%>
   <tr>
     <td class="w-small"><%= item.id%></td>
-<td><%= item.name %></td>
-<td><%= item.condition %></td>
-<td><%= item.description %></td>
-<td><%= item.start_time %></td>
-<td><%= item.end_time %></td>
-<td><%= item.status %></td>
-<td><%= item.user_id %></td>
+    <td><%= item.name %></td>
+    <td><%= item.condition %></td>
+    <td><%= item.description %></td>
+    <td><%= item.start_time.strftime('%x') %></td>
+    <td><%= item.end_time.strftime('%x') %></td>
+    <td><%= item.status %></td>
+    <td><%= item.user_id %></td>
 
     <td><%= item.updated_at.strftime('%x')%></td>
 
@@ -41,4 +41,3 @@
   <%#= will_paginate @items, renderer: BootstrapPagination::Sinatra %>
   <%#= will_paginate @items %>
 </div>
-

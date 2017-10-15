@@ -29,12 +29,47 @@ class ItemsController < ApplicationController
 
   end
 
+###### CUSTOMIZING BELOW #####
 
   # CREATE:
   post '/items' do
-    @item = Item.create(params[:item])
-    redirect '/items'
+    params[:item][:user_id] = @user.id
+    @item = Item.find_or_create_by(params[:item])
+    @alert_msg[:success_alert] = "Auction Item Has Been Added."
+    # erb :'items/user_items'
+    redirect 'items/user_items'
   end
+
+  get '/items/user_items' do
+    if !logged_in
+      @alert_msg[:danger_alert] = "Please login to view your items."
+      erb :'users/login'
+    else
+      @user_items = Item.where(user_id: @user.id)
+      erb :'items/user_items'
+    end
+  end
+
+  get '/items/:id/item_bid_form' do
+    if !logged_in
+      @alert_msg[:danger_alert] = "Please login to place a bid."
+      erb :'users/login'
+    else
+      @item = Item.find(params[:id])
+      erb :'items/item_bid_form'
+    end
+  end
+
+  post '/items/:id/item_bid_form' do
+    Bid.find_or_create_by(amount: params[:bid][:amount], user_id: @user.id, item_id: params[:id])
+    @alert_msg[:success_alert] = "Your bid has been submitted."
+
+    redirect '/bids'
+  end
+
+
+  ###### CUSTOMIZING ABOVE #####
+
 
   # SHOW: displays a single item detail page.
   get '/items/:id' do
@@ -72,8 +107,8 @@ class ItemsController < ApplicationController
   # DELETE:
   delete '/items/:id' do
     Item.find(params[:id]).destroy!
-    redirect '/items'
+    @alert_msg[:success_alert] = "Item Successfully Deleted."
+    erb :'items/user_items'
   end
 
 end
-
