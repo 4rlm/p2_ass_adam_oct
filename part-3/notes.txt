@@ -5,11 +5,14 @@ MODELS
 > user
   username, email, password
 
-> bids
+> bid
   price, user_id, item_id
 
 > item
   name, condition, description, start_time:datetime, end_time:datetime, status
+
+> item_users
+  item_id, user_id, role
 
 If you use text inputs in your form, users should enter dates in the following format: YYYY-MM-DD HH:MM:SS (e.g., 2016-12-26 01:00:00).
 

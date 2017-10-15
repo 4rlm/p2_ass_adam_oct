@@ -1,0 +1,16 @@
+<div class="">
+
+  <div class="erb_header">
+    <h3>Create New Bid</h3>
+  </div>
+
+  <form class="form-horizontal" action="/bids" method="post">
+
+    <!-- ## Form content moved to partial (_form_fields.erb) -->
+    <%= erb :'bids/_form_fields'%>
+
+    <button class="btn btn-success" name="commit" type="submit">Submit New Bid</button>
+  </form>
+
+</div>
+

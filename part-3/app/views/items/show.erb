@@ -1,0 +1,35 @@
+<div class="">
+
+  <div class="erb_header">
+    <h3>Item Detail View</h3>
+  </div>
+
+  <table class="table table-bordered table-hover table-striped">
+    <tr>
+      <th class="w-small">ID</th>
+<th class="w-small">Name</th>
+<th class="w-small">Condition</th>
+<th class="w-small">Description</th>
+<th class="w-small">Start Time</th>
+<th class="w-small">End Time</th>
+<th class="w-small">Status</th>
+<th class="w-small">User Id</th>
+
+      <th class="w-med">Updated</th>
+    </tr>
+
+    <tr>
+      <td><%= @item.id %></td>
+<td><%= @item.name %></td>
+<td><%= @item.condition %></td>
+<td><%= @item.description %></td>
+<td><%= @item.start_time %></td>
+<td><%= @item.end_time %></td>
+<td><%= @item.status %></td>
+<td><%= @item.user_id %></td>
+
+      <td><%= @item.updated_at.strftime('%x')%></td>
+    </tr>
+
+  </table>
+</div>
