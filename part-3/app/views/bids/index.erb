@@ -1,36 +1,29 @@
 <h3>View All Bid</h3>
 
-<table class="table table-bordered table-hover table-striped">
+<table class="table table-bordered table-hover table-striped text-nowrap">
   <tr>
     <th class="w-small">ID</th>
-<th>Amount</th>
-<th>User Id</th>
-<th>Item Id</th>
-
+    <th>Amount</th>
+    <th>User Id</th>
+    <th>Item Id</th>
     <th class="w-med">Updated</th>
     <th colspan="3" class="w-med">Manage</th>
   </tr>
   <% @bids.each do |bid|%>
   <tr>
     <td class="w-small"><%= bid.id%></td>
-<td><%= bid.amount %></td>
-<td><%= bid.user_id %></td>
-<td><%= bid.item_id %></td>
-
+    <td><%= bid.amount %></td>
+    <td><%= bid.user_id %></td>
+    <td><%= bid.item_id %></td>
     <td><%= bid.updated_at.strftime('%x')%></td>
-
     <td><a href="/bids/<%= bid.id %>"><span class="glyphicon glyphicon-folder-open"></span></a></td>
     <td><a href="/bids/<%= bid.id %>/edit"><span class="glyphicon glyphicon-edit"></span></a></td>
-
     <td><%= erb :'bids/_delete', layout: true, locals: { bid: bid }%></td>
-
   </tr>
   <% end %>
 </table>
-
 
 <div class="digg_pagination">
   <%#= will_paginate @bids, renderer: BootstrapPagination::Sinatra %>
   <%#= will_paginate @bids %>
 </div>
-

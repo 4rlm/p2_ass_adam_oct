@@ -3,12 +3,84 @@
 <div class="container" >
   <div class="row">
 
-    <div class="col-sm-8">
-      <h1>Home - Index</h1>
+    <div class="col-sm-7">
+      <h3>Recent Auction Items</h3>
+
+      <table class="table table-bordered table-hover table-striped text-nowrap">
+        <tr>
+          <th class="w-small">ID</th>
+          <th>Name</th>
+          <th>Condition</th>
+          <th>Description</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Status</th>
+          <th>User Id</th>
+          <th class="w-med">Updated</th>
+          <th colspan="1" class="w-med">Details</th>
+        </tr>
+        <% if @items %>
+        <% @items.each do |item|%>
+        <tr>
+          <td class="w-small"><%= item.id%></td>
+          <td><%= item.name %></td>
+          <td><%= item.condition %></td>
+          <td><%= item.description %></td>
+          <td><%= item.start_time.strftime('%x') %></td>
+          <td><%= item.end_time.strftime('%x') %></td>
+          <td><%= item.status %></td>
+          <td><%= item.user_id %></td>
+          <td><%= item.updated_at.strftime('%x')%></td>
+          <td><a href="/items/<%= item.id %>"><span class="glyphicon glyphicon-folder-open"></span></a></td>
+        </tr>
+        <% end %>
+        <% end %>
+      </table>
+
+      <div class="digg_pagination">
+        <% if @items %>
+        <%= will_paginate @items, renderer: BootstrapPagination::Sinatra %>
+        <%#= will_paginate @items %>
+        <% end %>
+      </div>
+
     </div> <!-- end col-sm-8-->
 
-    <div class="col-sm-4">
-      <h3>Home - Index</h3>
+
+
+    <div class="col-sm-5">
+      <h3>Popular Bids</h3>
+
+      <table class="table table-bordered table-hover table-striped text-nowrap">
+        <tr>
+          <th class="w-small">ID</th>
+          <th>Amount</th>
+          <th>User Id</th>
+          <th>Item Id</th>
+          <th class="w-med">Updated</th>
+          <th colspan="1" class="w-med">Details</th>
+        </tr>
+        <% if @bids %>
+        <% @bids.each do |bid|%>
+        <tr>
+          <td class="w-small"><%= bid.id%></td>
+          <td><%= bid.amount %></td>
+          <td><%= bid.user_id %></td>
+          <td><%= bid.item_id %></td>
+          <td><%= bid.updated_at.strftime('%x')%></td>
+          <td><a href="/bids/<%= bid.id %>"><span class="glyphicon glyphicon-folder-open"></span></a></td>
+        </tr>
+        <% end %>
+        <% end %>
+      </table>
+
+      <div class="digg_pagination">
+        <% if @bids %>
+        <%= will_paginate @bids, renderer: BootstrapPagination::Sinatra %>
+        <%#= will_paginate @bids %>
+        <% end %>
+      </div>
+
     </div> <!-- end col-sm-4-->
 
   </div><!-- end row -->

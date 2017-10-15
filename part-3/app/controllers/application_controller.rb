@@ -29,6 +29,14 @@ class ApplicationController < Sinatra::Base
     #   redirect_to_home_page
     # # end
 
+    # @items = Item.order('updated_at ASC').limit(10)
+    @items = Item.order('updated_at DESC').paginate(page: params[:page], per_page: 5)
+
+    # @bids = Bid.order('updated_at ASC').limit(10)
+    @bids = Bid.order('updated_at DESC').paginate(page: params[:page], per_page: 5)
+
+    erb :'index'
+
   end
 
   def redirect_to_bids
