@@ -1,0 +1,5 @@
+<section id="comment" class="content">
+  <h1><%= post_heading(@post) %></h1>
+
+  <%= erb :'posts/_post', { layout: false, locals: {:post => @post }} %>
+</section>

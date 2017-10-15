@@ -1,0 +1,13 @@
+<section class="content">
+  <h1>How was your stay?</h1>
+
+  <p>
+    The Paradise Isle Hostel values the feedback of all
+    its guests.  If you've stayed with us, please take a
+    few minutes to share your experience with us and
+    others who might stay at Paradise Isle Hostel.
+  </p>
+
+  <%= erb :"posts/_errors", { layout: false, locals: { errors: @post.errors.values.flatten } } %>
+  <%= erb :'posts/_form', { layout: false, locals: { post: @post } } %>
+</section>

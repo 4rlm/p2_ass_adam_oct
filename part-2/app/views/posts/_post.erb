@@ -1,0 +1,12 @@
+<article class="post">
+  <p>
+    <%= post.body %>
+  </p>
+
+  <div class="post-details">
+    <span class="post-detail"><%= post_tagline(post) %></span>
+    <span class="post-detail"><%= post_likes_count(post) %></span>
+  </div>
+
+  <%= erb :"posts/_post_like_form", { layout: false, locals: { post: post } } %>
+</article>

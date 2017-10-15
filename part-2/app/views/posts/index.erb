@@ -1,0 +1,24 @@
+<section id="comments" class="content">
+  <h1>
+    Our Guests Say ...
+  </h1>
+
+  <ul id="post-list" class="post-list">
+    <% @posts.each do |post| %>
+      <li>
+        <%= erb :'posts/_post', { layout: false, locals: {:post => post }} %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<section id="sidebar" class="sidebar">
+  <h1 class="sidebar-heading">
+    How was your stay?
+  </h1>
+  <p>
+    If you've stayed at the Paradise Isle Hostel, we'd love to here how much you loved your stay.
+  </p>
+
+  <%= erb :'posts/_form', { layout: false, locals: { post: @post } } %>
+</section>
