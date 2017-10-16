@@ -1,0 +1,36 @@
+<div class="">
+
+  <div class="erb_header">
+    <h3>User Detail View</h3>
+  </div>
+
+  <table class="table table-bordered table-hover table-striped text-nowrap">
+    <tr>
+      <th class="w-small">ID</th>
+      <th class="w-small">Username</th>
+      <th class="w-small">Email</th>
+      <th class="w-med">Updated</th>
+      <th class="w-med">Edit</th>
+      <th class="w-med">Delete</th>
+    </tr>
+
+    <tr>
+      <td><%= @user.id %></td>
+      <td><%= @user.username %></td>
+      <td><%= @user.email %></td>
+      <td><%= @user.updated_at.strftime('%x')%></td>
+
+      <td><a href="/users/<%= @user.id %>/edit"><span class="glyphicon glyphicon-edit"></span></a></td>
+
+      <td><%= erb :'users/_delete', layout: true, locals: { user: @user }%></td>
+
+    </tr>
+
+  </table>
+
+  <div class="">
+    <h3><a href='/items/user_items'>View My Items</a></h3>
+  </div>
+
+
+</div>

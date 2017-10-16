@@ -1,0 +1,67 @@
+<h1 style="color: white; margin: 30px 10px;">Home - Index</h1>
+
+<div class="container" >
+  <div class="row">
+
+    <div class="col-sm-7">
+      <h3>Recent Auction Items</h3>
+
+      <table class="table table-bordered table-hover table-striped text-nowrap">
+        <tr>
+          <th>Name</th>
+          <th>Condition</th>
+          <th>Description</th>
+          <th>End Time</th>
+        </tr>
+        <% if @items %>
+        <% @items.each do |item|%>
+        <tr>
+          <td><a href="/items/<%= item.id %>"><%= item.name %></a></td>
+          <td><%= item.condition %></td>
+          <td><%= item.description %></td>
+          <td><%= item.end_time.strftime('%x') %></td>
+        </tr>
+        <% end %>
+        <% end %>
+      </table>
+
+      <div class="digg_pagination">
+        <% if @items %>
+        <%= will_paginate @items, renderer: BootstrapPagination::Sinatra %>
+        <%#= will_paginate @items %>
+        <% end %>
+      </div>
+
+    </div> <!-- end col-sm-8-->
+
+    <div class="col-sm-5">
+      <h3>Popular Bids</h3>
+
+      <table class="table table-bordered table-hover table-striped text-nowrap">
+        <tr>
+          <th class="w-med">Item</th>
+          <th class="w-small">Amount</th>
+          <th class="w-med">End Date</th>
+        </tr>
+        <% if @bids %>
+        <% @bids.each do |bid|%>
+        <tr>
+          <td><a href="/bids/<%= bid.id %>"><%= bid.item.name %></a></td>
+          <td>$ <%= bid.amount %></td>
+          <td><%= bid.item.end_time.strftime('%x')%></td>
+        </tr>
+        <% end %>
+        <% end %>
+      </table>
+
+      <div class="digg_pagination">
+        <% if @bids %>
+        <%= will_paginate @bids, renderer: BootstrapPagination::Sinatra %>
+        <%#= will_paginate @bids %>
+        <% end %>
+      </div>
+
+    </div> <!-- end col-sm-4-->
+
+  </div><!-- end row -->
+</div><!-- end container -->

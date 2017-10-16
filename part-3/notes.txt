@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 # Part 3: Build a CRUD App
 
 
@@ -5,11 +14,11 @@ MODELS
 > user
   username, email, password
 
-> bids
-  price, user_id, item_id
+> bid
+  amount:decimal, user_id:integer, item_id:integer
 
 > item
-  name, condition, description, start_time:datetime, end_time:datetime, status
+  name, condition, description, start_time:datetime, end_time:datetime, status, user_id:integer
 
 If you use text inputs in your form, users should enter dates in the following format: YYYY-MM-DD HH:MM:SS (e.g., 2016-12-26 01:00:00).
 

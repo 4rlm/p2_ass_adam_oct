@@ -1,0 +1,37 @@
+<h3>View All Item</h3>
+
+<table class="table table-bordered table-hover table-striped text-nowrap">
+  <tr>
+    <th class="w-small">ID</th>
+    <th>Name</th>
+    <th>Condition</th>
+    <th>Description</th>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Status</th>
+    <th>User Id</th>
+    <th class="w-med">Updated</th>
+    <th colspan="2" class="w-med">Manage</th>
+  </tr>
+  <% @items.each do |item|%>
+  <tr>
+    <td class="w-small"><%= item.id%></td>
+    <td><a href="/items/<%= item.id %>"><%= item.name %></a></td>
+    <td><%= item.condition %></td>
+    <td><%= item.description %></td>
+    <td><%= item.start_time.strftime('%x') %></td>
+    <td><%= item.end_time.strftime('%x') %></td>
+    <td><%= item.status %></td>
+    <td><%= item.user_id %></td>
+    <td><%= item.updated_at.strftime('%x')%></td>
+    <td><a href="/items/<%= item.id %>/edit"><span class="glyphicon glyphicon-edit"></span></a></td>
+    <td><%= erb :'items/_delete', layout: true, locals: { item: item }%></td>
+  </tr>
+  <% end %>
+</table>
+
+
+<div class="digg_pagination">
+  <%#= will_paginate @items, renderer: BootstrapPagination::Sinatra %>
+  <%#= will_paginate @items %>
+</div>

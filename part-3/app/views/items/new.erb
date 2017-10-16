@@ -1,0 +1,16 @@
+<div class="">
+
+  <div class="erb_header">
+    <h3>Create New Item</h3>
+  </div>
+
+  <form class="form-horizontal" action="/items" method="post">
+
+    <!-- ## Form content moved to partial (_form_fields.erb) -->
+    <%= erb :'items/_form_fields'%>
+
+    <button class="btn btn-success" name="commit" type="submit">Submit New Item</button>
+  </form>
+
+</div>
+

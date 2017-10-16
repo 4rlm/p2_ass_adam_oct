@@ -1,0 +1,56 @@
+<div class="">
+
+  <div class="erb_header">
+    <h3>Item Detail View</h3>
+  </div>
+
+  <table class="table table-bordered table-hover table-striped text-nowrap">
+    <tr>
+      <th class="w-small">ID</th>
+      <th class="w-small">Name</th>
+      <th class="w-small">Condition</th>
+      <th class="w-small">Description</th>
+      <th class="w-small">Start Time</th>
+      <th class="w-small">End Time</th>
+      <th class="w-small">Status</th>
+      <th class="w-small">User Id</th>
+
+      <th class="w-med">Updated</th>
+    </tr>
+
+    <tr>
+      <td><%= @item.id %></td>
+      <td><%= @item.name %></td>
+      <td><%= @item.condition %></td>
+      <td><%= @item.description %></td>
+      <td><%= @item.start_time.strftime('%x') %></td>
+      <td><%= @item.end_time.strftime('%x') %></td>
+      <td><%= @item.status %></td>
+      <td><%= @item.user_id %></td>
+
+      <td><%= @item.updated_at.strftime('%x')%></td>
+    </tr>
+
+  </table>
+
+  <div class="">
+    <h3>bid form here.</h3>
+
+    <form class="form-horizontal" action="/items/<%= @item.id %>/item_bid_form" method="post">
+
+      <div class="form-group">
+        <label for="amount" class="col-sm-2 control-label">Bid Amount</label>
+        <div class="col-sm-10">
+          <input class="form-control" id="amount" name="bid[amount]" type="text" placeholder="place your bid ... $..." />
+        </div>
+      </div>
+
+      <button class="btn btn-success" name="commit" type="submit">Submit My Bid</button>
+
+    </form>
+
+  </div>
+
+
+
+</div>

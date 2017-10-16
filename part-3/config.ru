@@ -1,6 +1,13 @@
-# Require config/environment.rb
-require ::File.expand_path('../config/environment',  __FILE__)
+require_relative './config/environment'
 
-set :app_file, __FILE__
+if ActiveRecord::Migrator.needs_migration?
+  raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
+end
 
-run Sinatra::Application
+use Rack::MethodOverride
+use BidsController
+use ItemsController
+
+use UsersController
+run ApplicationController
+
